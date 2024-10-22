@@ -1,7 +1,8 @@
 package com.Question.Controller;
-import com.Question.Question;
+import com.Question.modal.Question;
 import com.Question.Service.QuestionServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +26,10 @@ public class QuestionController {
         return questionservice.getCategory();
         }
      @PostMapping("add")
-        public String addElement(@RequestBody Question question){
-        return questionservice.addItem(question);
+        public ResponseEntity<String> addElement(@RequestBody Question question){
+
+            return questionservice.addItem(question);
+
         }
     }
 

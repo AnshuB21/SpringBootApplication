@@ -1,10 +1,12 @@
 package com.Question.Service;
 
-import com.Question.Question;
-import com.Question.QuestionApplication;
+import com.Question.modal.Question;
 import com.Question.Repository.QuestionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -21,8 +23,13 @@ public class QuestionServices {
     public List<String> getCategory(){
         return QuestionRepo.FindallCategory();
     }
-    public String addItem(Question question){
+    public ResponseEntity<String> addItem(Question question){
          QuestionRepo.save(question);
-         return "sucess";
+         try {
+             return new ResponseEntity<String>("Sucess", HttpStatus.CREATED);
+         } catch (Exception e){
+             e.printStackTrace();
+         }
+         return new ResponseEntity<>("Bad Request", HttpStatus.BAD_REQUEST);
     }
 }

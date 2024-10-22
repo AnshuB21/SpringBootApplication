@@ -1,4 +1,4 @@
-package com.Question;
+package com.Question.modal;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
